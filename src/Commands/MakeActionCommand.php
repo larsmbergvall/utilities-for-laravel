@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Config;
 class MakeActionCommand extends GeneratorCommand
 {
     protected $name = 'make:action';
+
     protected $description = 'Create a new Action class';
+
     protected $type = 'Action';
 
     protected function getStub(): string
@@ -18,12 +20,12 @@ class MakeActionCommand extends GeneratorCommand
 
         return file_exists($customStub)
             ? $customStub
-            : __DIR__ . '/../stubs/action.stub';
+            : __DIR__.'/../stubs/action.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace . '\Actions';
+        return $rootNamespace.'\Actions';
     }
 
     protected function getNameInput(): string
@@ -48,7 +50,7 @@ class MakeActionCommand extends GeneratorCommand
             return str_replace('{{ actionSuffix }}', '', $stub);
         }
 
-        if (!str_ends_with($name, $suffix)) {
+        if (! str_ends_with($name, $suffix)) {
             return str_replace('{{ actionSuffix }}', $suffix, $stub);
         }
 
