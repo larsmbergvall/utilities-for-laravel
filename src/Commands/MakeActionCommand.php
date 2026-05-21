@@ -5,7 +5,6 @@ namespace Larsmbergvall\UtilitiesForLaravel\Commands;
 use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\Config;
-use Symfony\Component\Console\Input\InputOption;
 
 class MakeActionCommand extends GeneratorCommand
 {
