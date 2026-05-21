@@ -2,11 +2,15 @@
 
 namespace Larsmbergvall\UtilitiesForLaravel\Commands;
 
+use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\Config;
+use Symfony\Component\Console\Input\InputOption;
 
 class MakeActionCommand extends GeneratorCommand
 {
+    use CreatesMatchingTest;
+
     protected $name = 'make:action';
 
     protected $description = 'Create a new Action class';
@@ -65,5 +69,19 @@ class MakeActionCommand extends GeneratorCommand
         $suffix = $config->get('utilities-for-laravel.action_class_suffix', '');
 
         return $suffix;
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array<int, array<int, mixed>>
+     */
+    protected function getOptions()
+    {
+        return [
+            ['test', 't', InputOption::VALUE_NONE, 'Generate an accompanying PHPUnit test for the Action'],
+            ['pest', 'p', InputOption::VALUE_NONE, 'Generate an accompanying Pest test for the Action'],
+            ['phpunit', null, InputOption::VALUE_NONE, 'Generate an accompanying PHPUnit test for the Action'],
+        ];
     }
 }
